@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+   <logic>
+        <name>Lighting Landing On/Off</name>
+        <input>
+            <and>
+                <less-than>
+                    <property>/systems/ela07s/electrical/outputs/landing-light</property>
+                    <value>14.5</value>
+                </less-than>
+                <greater-than>
+                    <property>/systems/ela07s/electrical/outputs/landing-light</property>
+                    <value>10.0</value>
+                </greater-than>
+				<greater-than>
+					<property>/controls/lighting/landing-switch</property>
+                    <value>0.0</value>
+                </greater-than>
+            </and>
+        </input>
+        <output>
+            <property>/sim/model/ela07s/lighting/landing</property>
+        </output>
+    </logic>
+
+   <logic>
+        <name>Lighting strobe On/Off</name>
+        <input>
+            <and>
+                <less-than>
+                    <property>/systems/ela07s/electrical/outputs/landing-light</property>
+                    <value>14.5</value>
+                </less-than>
+                <greater-than>
+                    <property>/systems/ela07s/electrical/outputs/landing-light</property>
+                    <value>10.0</value>
+                </greater-than>
+				<greater-than>
+					<property>/controls/lighting/strobe</property>
+                    <value>0.0</value>
+                </greater-than>
+            </and>
+        </input>
+        <output>
+            <property>/sim/model/ela07s/lighting/strobe</property>
+        </output>
+    </logic>
+
+    <logic>
+        <name>ALS Lighting Landing</name>
+        <input>
+            <and>
+                <property>/sim/current-view/internal</property>
+                <property>/sim/model/ela07s/lighting/landing</property>
+            </and>
+        </input>
+        <output>
+            <property>/sim/rendering/als-secondary-lights/use-landing-light-int</property>
+        </output>
+    </logic>
+
+    <logic>
+        <name>ALS Lighting Exterior Landing</name>
+        <input>
+            <and>
+                <not>
+                    <property>/sim/current-view/internal</property>
+                </not>
+                <property>/sim/model/ela07s/lighting/landing</property>
+            </and>
+        </input>
+        <output>
+            <property>/sim/rendering/als-secondary-lights/use-landing-light-ext</property>
+        </output>
+    </logic>
+
+ 
+</PropertyList>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+   <logic>
+        <name>starter On/Off</name>
+        <input>
+            <and>
+                <less-than>
+                    <property>/systems/ela07s/electrical/volts</property>
+                    <value>14.5</value>
+                </less-than>
+                <greater-than>
+                    <property>/systems/ela07s/electrical/volts</property>
+                    <value>10.0</value>
+                </greater-than>
+				<greater-than>
+					<property>/controls/engines/engine/starter-switch</property>
+                    <value>0.0</value>
+                </greater-than>
+            </and>
+        </input>
+        <output>
+            <property>/controls/engines/engine/starter</property>
+        </output>
+    </logic>
+
+   <logic>
+        <name>Lighting strobe On/Off</name>
+        <input>
+            <and>
+                <less-than>
+                    <property>/systems/ela07s/electrical/volts</property>
+                    <value>14.5</value>
+                </less-than>
+                <greater-than>
+                    <property>/systems/ela07s/electrical/volts</property>
+                    <value>10.0</value>
+                </greater-than>
+				<greater-than>
+					<property>/controls/fuel/tank/boost-pump-switch</property>
+                    <value>0.0</value>
+                </greater-than>
+            </and>
+        </input>
+        <output>
+            <property>/controls/fuel/tank/boost-pump</property>
+        </output>
+    </logic>
+ 
+</PropertyList>

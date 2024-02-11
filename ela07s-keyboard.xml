@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>  
+
+	<key n="80">
+		<name>P</name>
+		<desc>Prerotator</desc>
+		<binding>
+			<command>property-assign</command>
+			<property>/yasim/ela07s/prerotator</property>
+			<value>1</value>
+		</binding>
+		<mod-up>
+			<binding>
+				<command>property-assign</command>
+				<property>/yasim/ela07s/prerotator</property>
+				<value>0</value>
+			</binding>
+		</mod-up>
+	</key>
+
+	<key n="115">
+		<name>s</name>
+		<desc>Fire Starter on Selected Engine(s)</desc>
+		<binding>
+			<command>property-assign</command>
+			<property>/controls/engines/engine/starter-switch</property>
+			<value>1</value>
+		</binding>
+		<mod-up>
+			<binding>
+				<command>property-assign</command>
+				<property>/controls/engines/engine/starter-switch</property>
+				<value>0</value>
+			</binding>
+		</mod-up>
+	</key> 
+ 
+	<key n="114">
+	<name>r</name>
+		<desc>Apply rotor brake</desc>
+		<binding>
+			<command>nasal</command>
+			<script>gyro.apply_rotor_brake()</script>
+		</binding>
+		<mod-up>
+		<binding>
+			<command>nasal</command>
+			<script>gyro.release_rotor_brake()</script>
+		</binding>
+		</mod-up>
+	</key>
+		
+		
+	<key n="108">
+	<name>l</name>
+	<desc>Toggle Look Down</desc>
+		<binding>
+		<command>nasal</command>
+		<script>heli.look_down();</script>
+		</binding>
+	</key>
+	 
+	<key n="107">
+	<name>k</name>
+	<desc>Toggle Look Up</desc>
+		<binding>
+		<command>nasal</command>
+		<script>heli.look_up();</script>
+		</binding>
+	</key>
+		
+
+</PropertyList>
+
