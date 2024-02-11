@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <path>white_ind.ac</path>
+
+ <animation>
+  <object-name>light_on</object-name>
+  <type>select</type>
+  <condition>
+    <property>sim/model/ela07s/lighting/landing</property>
+  </condition>
+ </animation>
+
+ <animation> 
+  <type>material</type> 
+  <object-name>light_on</object-name>
+  <condition>
+  <condition>
+    <property>sim/model/ela07s/lighting/landing</property>
+  </condition>
+  </condition>
+
+  <emission>
+   <red>1.0</red>
+   <green>1.0</green>
+   <blue>1.0</blue>
+  </emission>
+ </animation>
+
+
+</PropertyList>
+
+

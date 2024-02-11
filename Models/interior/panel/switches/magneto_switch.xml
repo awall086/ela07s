@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+	<path>magneto_switch.ac</path>
+
+	<!--   Magneto Key  -->   
+	<animation>
+		<type>knob</type>
+		<object-name>clickL</object-name>
+		<object-name>clickR</object-name>  
+		<visible>false</visible>
+		<action>
+			<binding>
+				<command>property-adjust</command>
+				<property>/controls/engines/engine[0]/magnetos</property>
+				<factor>1</factor>
+				<min>0</min>
+				<max>3</max>
+			</binding>
+		</action>
+<!--   <increase>
+     <binding>
+       <command>nasal</command>
+       <script>c152.click("magneto-forward")</script>
+     </binding>
+   </increase>
+   <decrease>
+     <binding>
+       <command>nasal</command>
+       <script>c152.click("magneto-back")</script>
+     </binding>
+   </decrease> -->
+		<hovered>
+			<binding>
+				<command>set-tooltip</command>
+				<tooltip-id>magneto-switch</tooltip-id>
+				<label>Magnetos: %s</label>
+				<property>/controls/engines/engine[0]/magnetos</property>
+				<mapping>nasal</mapping>
+				<script>
+					var m = arg[0];
+					if (m == 1) return 'RIGHT';
+					if (m == 2) return 'LEFT';
+					if (m == 3) return 'BOTH';
+					return 'OFF';
+				</script>
+			</binding>
+		</hovered>
+	</animation>
+ 
+	<animation>
+		<name>mags-key</name>
+		<type>rotate</type>
+		<object-name>key_magnetos</object-name>
+		<object-name>key_magnetos2</object-name>
+		<property>/controls/engines/engine[0]/magnetos</property>
+		<factor>35</factor>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>0</z-m>
+		</center>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+ 
+	<animation>
+		<type>select</type>
+		<object-name>clickS</object-name>  
+		<condition>
+			<greater-than>
+				<property>/controls/engines/engine[0]/magnetos</property>
+				<value>0</value>
+			</greater-than>
+		</condition>
+	</animation> 
+	
+	<animation>
+		<type>pick</type>
+		<object-name>clickS</object-name>
+		<visible>true</visible>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>/controls/engines/engine/starter-switch</property>
+				<value>1</value>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>/controls/engines/engine/starter-switch</property>
+					<value>0</value>
+				</binding>
+			</mod-up>>
+		</action>
+		<hovered>
+			<binding>
+				<command>set-tooltip</command>
+				<tooltip-id>starter</tooltip-id>
+				<label>Engine Starter: %s</label>
+				<mapping>on-off</mapping>
+				<property>/controls/engines/engine/starter-switch</property>
+			</binding>
+		</hovered>
+	</animation>  
+</PropertyList>
+
+

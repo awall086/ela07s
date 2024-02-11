@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <path>green_ind.ac</path>
+
+ <animation>
+  <object-name>light_on</object-name>
+  <type>select</type>
+  <condition>
+   <greater-than>
+    <property>/systems/ela07s/electrical/volts</property>
+    <value>8.3</value>
+   </greater-than>
+  </condition>
+ </animation>
+
+ <animation> 
+  <type>material</type> 
+  <object-name>light_on</object-name>
+  <condition>
+   <greater-than>
+    <property>/systems/ela07s/electrical/volts</property>
+    <value>8.3</value>
+   </greater-than>
+  </condition>
+
+  <emission>
+   <red>0.0</red>
+   <green>0.7</green>
+   <blue>0.0</blue>
+  </emission>
+ </animation>
+
+
+</PropertyList>
+
+

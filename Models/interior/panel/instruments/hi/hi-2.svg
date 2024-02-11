@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="256"
+   height="256"
+   viewBox="0 0 67.733332 67.733335"
+   version="1.1"
+   id="svg988"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="hi-2.svg"
+   inkscape:export-filename="/home/adrian/FGFS_Hangar/Aircraft/c152/Models/Interior/Panel/Instruments/hi/hi-2.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
+  <defs
+     id="defs982" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.979899"
+     inkscape:cx="31.676183"
+     inkscape:cy="122.61317"
+     inkscape:document-units="px"
+     inkscape:current-layer="g980"
+     showgrid="false"
+     units="px"
+     inkscape:pagecheckerboard="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="1025"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true" />
+  <metadata
+     id="metadata985">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Capa 2">
+    <g
+       transform="translate(4.1999998e-7,-229.37675)"
+       id="g980"
+       inkscape:label="Triangulos"
+       style="fill:#c86b4b;fill-opacity:1">
+      <path
+         inkscape:label="Triangulo1"
+         inkscape:connector-curvature="0"
+         id="path5673"
+         d="m 35.954517,229.19581 -4.180417,0.0529 2.06375,3.4925 z"
+         style="display:none;fill:#c86b4b;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:label="Triangulo1"
+         inkscape:connector-curvature="0"
+         id="path5673-5"
+         d="m 31.776458,297.29102 4.180417,-0.0529 -2.06375,-3.4925 z"
+         style="fill:#c86b4b;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:label="Triangulo1"
+         inkscape:connector-curvature="0"
+         id="path5673-5-1"
+         d="m 67.759783,265.22353 -0.0529,-4.18042 -3.4925,2.06375 z"
+         style="fill:#c86b4b;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:label="Triangulo1"
+         inkscape:connector-curvature="0"
+         id="path5673-5-1-6"
+         d="m -0.02645034,261.04311 0.0529,4.18042 3.49250014,-2.06375 z"
+         style="fill:#c86b4b;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:label="Triangulo1"
+         inkscape:connector-curvature="0"
+         id="path5673-9"
+         d="m 58.823155,240.47137 -2.993407,-2.91859 -1.010279,3.92886 z"
+         style="fill:#c86b4b;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:label="Triangulo1"
+         inkscape:connector-curvature="0"
+         id="path5673-5-1-64"
+         d="m 56.502154,288.2221 2.918598,-2.99341 -3.928862,-1.01029 z"
+         style="fill:#c86b4b;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:label="Triangulo1"
+         inkscape:connector-curvature="0"
+         id="path5673-9-8"
+         d="m 8.77561,285.77177 2.993407,2.91859 1.010279,-3.92886 z"
+         style="fill:#c86b4b;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:label="Triangulo1"
+         inkscape:connector-curvature="0"
+         id="path5673-5-1-64-0"
+         d="m 11.219594,238.14763 -2.9185979,2.99341 3.9288619,1.01029 z"
+         style="fill:#c86b4b;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Capa 3">
+    <path
+       style="fill:#2d2d2d;fill-opacity:1;stroke:#c86b4b;stroke-width:0.66145831;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 18.195527,34.859812 30.474236,27.52979 c 0.773094,-6.359143 1.971353,-9.2543 3.214467,-12.205664 V 8.8482045 15.324126 c 1.299764,3.021683 2.815669,5.853251 3.146996,12.205663 l 12.503859,7.1987 c 1.856435,1.394446 1.470274,3.022674 1.538047,4.803326 l -14.041906,-4.756141 -1.397684,11.277356 7.2909,3.60346 -0.639857,2.582077 -6.651043,-1.244658 -1.793489,2.119511 -1.758714,-2.09297 -6.454578,1.218117 -0.780985,-2.582077 7.28914,-3.624495 -1.465153,-11.088046 -13.599683,4.587866 c 0.180795,-1.862559 -0.163464,-3.378126 1.320974,-4.672003 z"
+       id="path4534"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccccccccccc"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.11666656px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-opacity:1"
+       x="27.888222"
+       y="32.950069"
+       id="text862"><tspan
+         sodipodi:role="line"
+         id="tspan864"
+         x="27.888222"
+         y="32.950069">SIGMA-TEK</tspan></text>
+  </g>
+</svg>

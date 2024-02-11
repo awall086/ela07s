@@ -1,0 +1,1510 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+<path>ela07s.ac</path>
+
+    <nasal>
+        <load>
+
+            var rplayer = cmdarg();
+
+            # Passengers
+            var pax_state_path = rplayer.getNode("sim/multiplay/generic/int[16]").getPath();
+
+            var pilot = rplayer.initNode("pax/pilot/present", 0, "BOOL");
+            var co_pilot = rplayer.initNode("pax/co-pilot/present", 0, "BOOL");
+
+
+            setlistener(pax_state_path, func (node) {
+                var state = node.getValue();
+                pilot.setBoolValue(bits.test(state, 0));
+                co_pilot.setBoolValue(bits.test(state, 1));
+
+            }, 1, 0);
+
+            var livery_update = aircraft.livery_update.new(
+            "Aircraft/ela07s/Models/Liveries", 10,
+            func { print("ELA07S livery update") });
+
+        </load>
+        <unload>
+			livery_update.stop();
+		</unload> 
+    </nasal> 
+
+    <params>
+        <doors>
+            <right>sim/multiplay/generic/float[0]</right>       
+        </doors>
+    </params>
+
+
+    <effect>
+        <inherits-from>Aircraft/ela07s/Models/Effects/exterior-glass-reflection</inherits-from>
+        <object-name>windshield</object-name>
+    </effect>
+
+    <effect>
+        <inherits-from>Aircraft/ela07s/Models/Effects/bumpspec</inherits-from>
+        <object-name>fuselaje</object-name>
+        <object-name>door_ext</object-name>
+        <object-name>tail</object-name>
+        <object-name>rudder</object-name>
+        <object-name>fairing_l</object-name>
+        <object-name>fairing_r</object-name>
+    </effect> 
+
+
+    <animation>
+        <type>noshadow</type>
+        <object-name>prop_fast</object-name>
+		<object-name>prop_fast</object-name>
+		<object-name>windshield</object-name>
+		<object-name>windshield_int</object-name>
+    </animation>
+
+    <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+        <object-name>prop_fast</object-name>
+		<object-name>prop_fast</object-name>
+	</effect>	
+
+    <!-- Liveries --> 
+
+    <animation>
+        <type>material</type>
+        <object-name>fuselaje</object-name>
+        <object-name>door_ext</object-name>
+        <object-name>tail</object-name>      
+        <object-name>rudder</object-name>  
+        <object-name>fairing_l</object-name>  
+        <object-name>fairing_r</object-name>  
+        <object-name>strut_l</object-name>  
+        <object-name>strut_r</object-name> 
+        <object-name>structure</object-name> 
+        <object-name>nose_wheel_strut</object-name>	
+        <property-base>sim/model/livery/</property-base>
+        <texture-prop>texture</texture-prop>
+        <texture>ELA07S3.png</texture>
+    </animation>
+
+	<!-- Master Switch -->
+    <model>
+        <name>master_switch</name>
+        <path>interior/panel/switches/master-switch.xml</path>
+        <offsets>
+			<pitch-deg>-26</pitch-deg>  
+			<x-m>-1.4578</x-m>
+            <y-m>0.01690</y-m>
+            <z-m>0.191141</z-m>
+        </offsets>
+    </model>
+
+	<!-- Bus volts annunciator -->
+    <model>
+        <name>master_ind</name>
+        <path>interior/panel/indicators/master-ind.xml</path>
+        <offsets>
+			<pitch-deg>-26</pitch-deg>  
+			<x-m>-1.4778</x-m>
+            <y-m>0.01790</y-m>
+            <z-m>0.21900</z-m>
+        </offsets>
+    </model>
+
+	<!-- Alternator charging annunciator -->
+    <model>
+        <name>charge_ind</name>
+        <path>interior/panel/indicators/charge-ind.xml</path>
+        <offsets>
+			<pitch-deg>-26</pitch-deg>  
+			<x-m>-1.4778</x-m>
+            <y-m>-0.082</y-m>
+            <z-m>0.21900</z-m>
+        </offsets>
+    </model>
+
+	<!-- Lights Switch -->
+    <model>
+        <name>lights_switch</name>
+        <path>interior/panel/switches/lights-switch.xml</path>
+        <offsets>
+			<pitch-deg>-26</pitch-deg>  
+			<x-m>-1.4581</x-m>
+            <y-m>-0.04700</y-m>
+            <z-m>0.191141</z-m>
+        </offsets>
+    </model>
+
+	<!-- Lights On annunciator -->
+    <model>
+        <name>lights_ind</name>
+        <path>interior/panel/indicators/lights-ind.xml</path>
+        <offsets>
+			<pitch-deg>-26</pitch-deg>  
+			<x-m>-1.4778</x-m>
+            <y-m>-0.04700</y-m>
+            <z-m>0.21900</z-m>
+        </offsets>
+    </model>
+
+	<!-- Electric Fuel Pump Switch -->
+    <model>
+        <name>fuel_pump_switch</name>
+        <path>interior/panel/switches/fuel-pump-switch.xml</path>
+        <offsets>
+			<pitch-deg>-26</pitch-deg>  
+			<x-m>-1.4578</x-m>
+            <y-m>0.05890</y-m>
+            <z-m>0.191141</z-m>
+        </offsets>
+    </model>
+
+	<!-- Fuel Pump On annunciator -->
+    <model>
+        <name>fuel-pump_ind</name>
+        <path>interior/panel/indicators/fuel-pump-ind.xml</path>
+        <offsets>
+			<pitch-deg>-26</pitch-deg>  
+			<x-m>-1.4778</x-m>
+            <y-m>0.05890</y-m>
+            <z-m>0.21900</z-m>
+        </offsets>
+    </model>
+
+	<!-- Magnetos And Start Switch -->
+    <model>
+        <name>magneto_switch</name>
+        <path>interior/panel/switches/magneto_switch.xml</path>
+        <offsets>
+			<pitch-deg>-26</pitch-deg>  
+			<x-m>-1.46629</x-m>
+            <y-m>0.193</y-m>
+            <z-m>0.21614</z-m>
+        </offsets>
+    </model>	
+
+	<!-- Pneumatic Rotor Brake Switch -->
+    <model>
+        <name>rotorbrake_switch</name>
+        <path>interior/panel/switches/rotorbrake-switch.xml</path>
+        <offsets>
+			<pitch-deg>-26</pitch-deg>  
+			<x-m>-1.485</x-m>
+            <y-m>-0.18690</y-m>
+            <z-m>0.236141</z-m>
+        </offsets>
+    </model>
+
+	<!-- Electro-Pneumatic pump Switch -->
+    <model>
+        <name>pneumatic_switch</name>
+        <path>interior/panel/switches/pneumatic-switch.xml</path>
+        <offsets>
+			<pitch-deg>-26</pitch-deg>  
+			<x-m>-1.475</x-m>
+            <y-m>-0.24690</y-m>
+            <z-m>0.236141</z-m>
+        </offsets>
+    </model>
+
+	<!-- Magnetic Compass -->
+    <model>
+        <name>magnetic_compass</name>
+        <path>interior/panel/instruments/hi/hi.xml</path>
+        <offsets>
+			<pitch-deg>-18</pitch-deg>  
+			<x-m>-1.5382</x-m>
+            <y-m>-0.001911</y-m>
+            <z-m>0.556457</z-m> 
+		</offsets>
+    </model>	
+
+	<!-- Altimeter -->
+    <model>
+        <name>altimeter</name>
+        <path>interior/panel/instruments/alt/alt.xml</path>
+        <offsets>
+			<pitch-deg>-26</pitch-deg>  
+			<x-m>-1.58149</x-m>
+            <y-m>-0.113393</y-m>
+            <z-m>0.439157</z-m> 
+		</offsets>
+    </model>
+
+	<!-- Vertical Speed Indicator -->
+	
+	<!-- Pilot -->
+	<animation> 
+		<type>rotate</type>
+		<object-name>vsi_needle</object-name>
+		<property>instrumentation/vertical-speed-indicator/indicated-speed-fpm</property>
+		<interpolation>
+			<entry><ind>-2000</ind><dep>-172</dep></entry>
+			<entry><ind>-1500</ind><dep>-130</dep></entry>
+			<entry><ind>-1000</ind><dep>-79</dep></entry>
+			<entry><ind>-500</ind><dep>-33</dep></entry>
+			<entry><ind>0</ind><dep>0</dep></entry>
+			<entry><ind>500</ind><dep>33</dep></entry>
+			<entry><ind>1000</ind><dep>79</dep></entry>
+			<entry><ind>1500</ind><dep>130</dep></entry>
+			<entry><ind>2000</ind><dep>172</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>-1.57999</x1-m>
+			<y1-m>0.111507</y1-m>
+			<z1-m>0.439957</z1-m>
+			<x2-m>-1.58149</x2-m>
+			<y2-m>0.111507</y2-m>
+			<z2-m>0.439257</z2-m>
+		</axis> 
+	</animation>  
+
+	<!-- Copilot -->
+	<animation> 
+		<type>rotate</type>
+		<object-name>copilot_vsi_needle</object-name>
+		<property>instrumentation/vertical-speed-indicator/indicated-speed-fpm</property>
+		<interpolation>
+			<entry><ind>-2000</ind><dep>-172</dep></entry>
+			<entry><ind>-1500</ind><dep>-130</dep></entry>
+			<entry><ind>-1000</ind><dep>-79</dep></entry>
+			<entry><ind>-500</ind><dep>-33</dep></entry>
+			<entry><ind>0</ind><dep>0</dep></entry>
+			<entry><ind>500</ind><dep>33</dep></entry>
+			<entry><ind>1000</ind><dep>79</dep></entry>
+			<entry><ind>1500</ind><dep>130</dep></entry>
+			<entry><ind>2000</ind><dep>172</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>-0.310091</x1-m>
+			<y1-m>-0.066193</y1-m>
+			<z1-m>0.620257</z1-m>
+			<x2-m>-0.311491</x2-m>
+			<y2-m>-0.066193</y2-m>
+			<z2-m>0.619457</z2-m>
+		</axis> 
+	</animation> 
+	
+	<!-- Airspeed Indicator (in Miles per Hour) -->
+	
+	<!-- Pilot -->
+	<animation>
+		<type>rotate</type>
+		<object-name>airspeed_needle</object-name>
+		<property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
+		<interpolation>
+			<entry><ind>   0</ind><dep>    0</dep></entry>
+			<entry><ind> 138</ind><dep>  340</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>-1.58689</x1-m>
+			<y1-m>-0.001893</y1-m>
+			<z1-m>0.455657</z1-m>
+			<x2-m>-1.58829</x2-m>
+			<y2-m>-0.001893</y2-m>
+			<z2-m>0.454957</z2-m>
+		</axis>  
+	</animation>
+	
+	<!-- Copilot -->
+	<animation>
+		<type>rotate</type>
+		<object-name>copilot_airspeed_needle</object-name>
+		<property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
+		<interpolation>
+			<entry><ind>   0</ind><dep>    0</dep></entry>
+			<entry><ind> 138</ind><dep>  340</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>-0.310291</x1-m>
+			<y1-m>0.040307</y1-m>
+			<z1-m>0.620957</z1-m>
+			<x2-m>-0.311691</x2-m>
+			<y2-m>0.040307</y2-m>
+			<z2-m>0.620057</z2-m>
+		</axis>  
+	</animation>	
+
+	<!-- Fuel Quantity Indicator -->
+	<animation>
+		<type>rotate</type>
+		<object-name>fuel_qty_needle</object-name>
+		<property>consumables/fuel/tank/level-gal_us</property>
+		<interpolation>
+			<entry><ind>   0</ind><dep>    0</dep></entry>
+			<entry><ind> 16.499</ind><dep>112</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>-1.36789</x1-m>
+			<y1-m>-0.001993</y1-m>
+			<z1-m>-0.001443</z1-m>
+			<x2-m>-1.37089</x2-m>
+			<y2-m>-0.001993</y2-m>
+			<z2-m>-0.002843</z2-m>
+		</axis>  
+	</animation>
+
+	<!-- Pneumatic Pressure Indicator -->
+	<animation>
+		<type>rotate</type>
+		<object-name>pneumatic_press_needle</object-name>
+		<property>systems/ela07s/pneumatic/pneumatic-press</property>
+		<interpolation>
+			<entry><ind>   0</ind><dep>  -54</dep></entry>
+			<entry><ind> 1.0</ind><dep>  179</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>-1.49977</x1-m>
+			<y1-m>-0.217307</y1-m>
+			<z1-m>0.27073</z1-m>
+			<x2-m>-1.50092</x2-m>
+			<y2-m>-0.217307</y2-m>
+			<z2-m>0.270153</z2-m>
+		</axis>  
+	</animation>
+
+	<!-- Rotor Prerotator button -->
+	<animation>
+		<type>translate</type>
+		<object-name>prerotator_button</object-name>
+		<property>yasim/ela07s/prerotator</property>
+		<factor>0.0025</factor>
+		<axis>
+			<x1-m>-1.21154</x1-m>
+			<y1-m>-0.027093</y1-m>
+			<z1-m>0.386243</z1-m>
+			<x2-m>-1.2148</x2-m>
+			<y2-m>-0.027093</y2-m>
+			<z2-m>0.382652</z2-m>
+		</axis> 
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>prerotator_button</object-name>
+		<visible>true</visible>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>yasim/ela07s/prerotator</property>
+				<value>1</value>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>yasim/ela07s/prerotator</property>
+					<value>0</value>
+				</binding>
+			</mod-up>
+		</action>
+		<hovered>
+			<binding>
+				<command>set-tooltip</command>
+				<tooltip-id>prerotator</tooltip-id>
+				<label>Prerotator: %s</label>
+				<mapping>on-off</mapping>
+				<property>yasim/ela07s/prerotator</property>
+			</binding>
+		</hovered>
+	</animation>
+
+	<!-- Rotor RPM Indicator -->
+	
+	<!-- Pilot -->
+	<animation>
+		<type>rotate</type>
+		<object-name>rotor_rpm_needle</object-name>
+		<property>/rotors/main/rpm</property>
+		<interpolation>
+			<entry>
+				<ind>0.0</ind>
+				<dep>0.0</dep>
+			</entry>
+			<entry>
+				<ind>500.0</ind>
+				<dep>250.0</dep>
+			</entry>
+		</interpolation>
+		<axis>
+			<x1-m>-1.53289</x1-m>
+			<y1-m>-0.119093</y1-m>
+			<z1-m>0.342157</z1-m>
+			<x2-m>-1.53509</x2-m>
+			<y2-m>-0.119093</y2-m>
+			<z2-m>0.341057</z2-m>
+		</axis> 
+	</animation>	
+	
+	<!-- Copilot -->
+	<animation>
+		<type>rotate</type>
+		<object-name>copilot_rotor_rpm_needle</object-name>
+		<property>/rotors/main/rpm</property>
+		<interpolation>
+			<entry>
+				<ind>0.0</ind>
+				<dep>0.0</dep>
+			</entry>
+			<entry>
+				<ind>500.0</ind>
+				<dep>250.0</dep>
+			</entry>
+		</interpolation>
+		<axis>
+			<x1-m>-0.262991</x1-m>
+			<y1-m>-0.184993</y1-m>
+			<z1-m>0.555357</z1-m>
+			<x2-m>-0.265091</x2-m>
+			<y2-m>-0.184993</y2-m>
+			<z2-m>0.554057</z2-m>
+		</axis> 
+	</animation>
+	
+	<!-- Engine RPM Indicator -->
+	
+	<!-- Pilot -->
+	<animation>
+		<type>rotate</type>
+		<object-name>engine_rpm_needle</object-name>
+		<property>/engines/engine[0]/rpm</property>
+		<interpolation>
+			<entry>
+				<ind>0.0</ind>
+				<dep>0.0</dep>
+			</entry>
+			<entry>
+				<ind>7000.0</ind>
+				<dep>242.0</dep>
+			</entry>
+		</interpolation>
+		<axis>
+			<x1-m>-1.53339</x1-m>
+			<y1-m>0.119507</y1-m>
+			<z1-m>0.341857</z1-m>
+			<x2-m>-1.53569</x2-m>
+			<y2-m>0.119507</y2-m>
+			<z2-m>0.340757</z2-m>
+		</axis> 
+	</animation>
+	
+	<!-- Copilot -->
+	<animation>
+		<type>rotate</type>
+		<object-name>copilot_engine_rpm_needle</object-name>
+		<property>/engines/engine[0]/rpm</property>
+		<interpolation>
+			<entry>
+				<ind>0.0</ind>
+				<dep>0.0</dep>
+			</entry>
+			<entry>
+				<ind>7000.0</ind>
+				<dep>242.0</dep>
+			</entry>
+		</interpolation>
+		<axis>
+			<x1-m>-0.301291</x1-m>
+			<y1-m>-0.162593</y1-m>
+			<z1-m>0.614157</z1-m>
+			<x2-m>-0.303491</x2-m>
+			<y2-m>-0.162593</y2-m>
+			<z2-m>0.612957</z2-m>
+		</axis> 
+	</animation>
+	
+	<!-- Engine Oil Pressure Indicator -->
+	<animation>
+		<type>rotate</type>
+		<object-name>oil_press_needle</object-name>
+		<property>/engines/engine[0]/oil-pressure-bar</property>
+		<interpolation>
+			<entry>
+				<ind>0.0</ind>
+				<dep>0.0</dep>
+			</entry>
+			<entry>
+				<ind>10.0</ind>
+				<dep>122.0</dep>
+			</entry>
+		</interpolation>
+		<axis>
+			<x1-m>-1.52739</x1-m>
+			<y1-m>0.192207</y1-m>
+			<z1-m>0.334457</z1-m>
+			<x2-m>-1.53039</x2-m>
+			<y2-m>0.192207</y2-m>
+			<z2-m>0.332957</z2-m>
+		</axis> 
+	</animation>
+
+	<!-- Engine Oil Temperature Indicator -->
+	<animation>
+		<type>rotate</type>
+		<object-name>oil_temp_needle</object-name>
+		<property>/engines/engine[0]/oil-temperature-degc</property>
+		<interpolation>
+			<entry>
+				<ind>50.0</ind>
+				<dep>0.0</dep>
+			</entry>
+			<entry>
+				<ind>100.0</ind>
+				<dep>54.0</dep>
+			</entry>
+			<entry>
+				<ind>160.0</ind>
+				<dep>122.0</dep>
+			</entry>
+		</interpolation>
+		<axis>
+			<x1-m>-1.49499</x1-m>
+			<y1-m>0.152307</y1-m>
+			<z1-m>0.263757</z1-m>
+			<x2-m>-1.49789</x2-m>
+			<y2-m>0.152307</y2-m>
+			<z2-m>0.262257</z2-m>
+		</axis> 
+	</animation>
+
+	<!-- Engine Fuel Pressure Indicator -->
+	
+	<!-- Pilot -->
+	<animation>
+		<type>rotate</type>
+		<object-name>fuel_press_needle</object-name>
+		<property>/engines/engine[0]/fuel-pressure-bar</property>
+		<interpolation>
+			<entry>
+				<ind>0.0</ind>
+				<dep>-54.0</dep>
+			</entry>
+			<entry>
+				<ind>0.3</ind>
+				<dep>35.0</dep>
+			</entry>
+			<entry>
+				<ind>0.475</ind>
+				<dep>81.0</dep>
+			</entry>
+		</interpolation>
+		<axis>
+			<x1-m>-1.50039</x1-m>
+			<y1-m>0.079507</y1-m>
+			<z1-m>0.270757</z1-m>
+			<x2-m>-1.50179</x2-m>
+			<y2-m>0.079507</y2-m>
+			<z2-m>0.270057</z2-m>
+		</axis> 
+	</animation>
+	
+	<!-- Copilot -->
+	<animation>
+		<type>rotate</type>
+		<object-name>copilot_fuel_press_needle</object-name>
+		<property>/engines/engine[0]/fuel-pressure-bar</property>
+		<interpolation>
+			<entry>
+				<ind>0.0</ind>
+				<dep>-54.0</dep>
+			</entry>
+			<entry>
+				<ind>0.3</ind>
+				<dep>35.0</dep>
+			</entry>
+			<entry>
+				<ind>0.475</ind>
+				<dep>81.0</dep>
+			</entry>
+		</interpolation>
+		<axis>
+			<x1-m>-0.309191</x1-m>
+			<y1-m>0.140607</y1-m>
+			<z1-m>0.626257</z1-m>
+			<x2-m>-0.310591</x2-m>
+			<y2-m>0.140607</y2-m>
+			<z2-m>0.625357</z2-m>
+		</axis> 
+	</animation>
+	
+	<!-- Engine Propeller -->
+	<animation>
+		<name>PropellerSlowGroup</name>
+		<object-name>prop1</object-name>
+		<object-name>prop2</object-name>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>PropellerSlowGroup</object-name>
+		<condition>
+			<less-than>
+				<property>engines/engine[0]/rpm</property>
+				<value>540</value>
+			</less-than>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>prop_fast</object-name>
+		<condition>
+			<greater-than>
+				<property>engines/engine[0]/rpm</property>
+				<value>540</value>
+			</greater-than>
+		</condition>
+	</animation>
+ 
+	<animation>
+		<type>spin</type>
+		<object-name>PropellerSlowGroup</object-name>
+		<object-name>prop_fast</object-name>
+		<object-name>prop3</object-name>
+		<property>engines/engine[0]/rpm</property>
+		<factor>1.0</factor>
+		<center>
+			<x-m>1.35351</x-m>
+			<y-m>-0.005393</y-m>
+			<z-m>0.632957</z-m>
+		</center>
+		<axis>
+			<x>1.0</x>
+			<y>0.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+
+	<!-- Rotor -->
+	<animation>
+		<type>select</type>
+		<object-name>rotor_fast1</object-name>
+		<object-name>rotor_fast2</object-name>
+		<object-name>rotor_fast3</object-name>
+		<condition>
+			<greater-than>
+				<property>rotors/main/rpm</property>
+				<value>180</value>
+			</greater-than>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>blade1</object-name>
+		<object-name>blade2</object-name>
+		<object-name>rotor2</object-name>
+		<object-name>rotor_bolts</object-name>
+		<condition>
+			<less-than>
+				<property>rotors/main/rpm</property>
+				<value>180</value>
+			</less-than>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>spin</type>
+		<object-name>rotor1</object-name>
+		<object-name>rotor2</object-name>
+		<object-name>rotor_bolts</object-name>
+	
+		<object-name>blade1</object-name>
+		<object-name>blade2</object-name>
+	
+		<object-name>rotor_fast1</object-name>
+		<object-name>rotor_fast2</object-name>
+		<object-name>rotor_fast3</object-name>
+	
+		<property>rotors/main/rpm</property>
+		<factor>1</factor>
+		<offset-deg>0</offset-deg>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+		<center>
+			<x-m>0.345709</x-m>
+			<y-m>-0.000393</y-m>
+			<z-m>2.21166</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>rotor1</object-name>
+		<object-name>rotor2</object-name>
+		<object-name>rotor3</object-name>
+		<object-name>rotor_bolts</object-name>
+	
+		<object-name>blade1</object-name>
+		<object-name>blade2</object-name>
+	
+		<object-name>rotor_fast1</object-name>
+		<object-name>rotor_fast2</object-name>
+		<object-name>rotor_fast3</object-name>
+	
+		<property>rotors/main/tilt/pitch-deg</property>
+		<factor>1</factor>
+		<offset-deg>0</offset-deg>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0.303709</x-m>
+			<y-m>0.000807</y-m>
+			<z-m>2.09156</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>pushrod1</object-name>
+		<object-name>pushrod2</object-name>
+		<object-name>pushrod3</object-name>
+		<object-name>pushrod4</object-name>
+
+		<property>rotors/main/tilt/pitch-deg</property>
+		<factor>-0.003</factor>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+		<center>
+			<x-m>0.531809</x-m>
+			<y-m>-0.000043</y-m>
+			<z-m>0.97331</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>rotor1</object-name>
+		<object-name>rotor2</object-name>
+		<object-name>rotor3</object-name>
+		<object-name>rotor_bolts</object-name>
+	
+		<object-name>blade1</object-name>
+		<object-name>blade2</object-name>
+	
+		<object-name>rotor_fast1</object-name>
+		<object-name>rotor_fast2</object-name>
+		<object-name>rotor_fast3</object-name>
+	
+		<property>rotors/main/tilt/roll-deg</property>
+		<factor>1</factor>
+		<offset-deg>0</offset-deg>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0.303709</x-m>
+			<y-m>0.000807</y-m>
+			<z-m>2.09156</z-m>
+		</center>
+	</animation>
+
+	<!-- Nose Landing Gear -->
+	<animation>
+		<name>Nose_Gear_Group</name>
+		<object-name>nose_wheel</object-name>
+		<object-name>nose_wheel_axis</object-name>
+		<object-name>nose_wheel_strut</object-name>
+	</animation>
+ 
+	<animation>
+		<type>translate</type>
+		<object-name>Nose_Gear_Group</object-name>    
+		<property>gear/gear[0]/compression-norm</property>
+		<factor>0.15</factor>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>spin</type>
+		<object-name>nose_wheel</object-name>
+		<property>gear/gear[0]/rollspeed-ms</property>
+		<factor>59.6</factor>
+		<center>
+			<x-m>-1.39689</x-m>
+			<y-m>-0.000643</y-m>
+			<z-m>-0.595743</z-m>
+		</center>
+		<axis>
+			<x>0.0</x>
+			<y>-1.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+
+ 
+	<animation>
+		<type>rotate</type>
+		<object-name>Nose_Gear_Group</object-name>
+		<property>/controls/flight/rudder</property>
+		<offset-deg>6.5</offset-deg>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>-1.39689</x-m>
+			<y-m>-0.000643</y-m>
+			<z-m>-0.595743</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>Nose_Gear_Group</object-name>
+		<condition>
+			<property>gear/gear[0]/wow</property>
+		</condition>
+		<property>/controls/flight/rudder</property>
+		<factor>-30.0</factor>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+		<center>
+			<x-m>-1.39689</x-m>
+			<y-m>-0.000643</y-m>
+			<z-m>-0.595743</z-m>
+		</center>
+	</animation>
+
+	<!-- Left Main Landing Gear -->
+	<animation>
+		<name>LeftWheelGroup</name>
+		<object-name>main_wheel_l</object-name>
+		<object-name>fairing_l</object-name>
+		<object-name>strut_l</object-name>
+	</animation>
+ 
+	<animation>
+		<type>spin</type>
+		<object-name>main_wheel_l</object-name>
+		<property>gear/gear[1]/rollspeed-ms</property>
+		<factor>47.74</factor>
+		<center>
+			<x-m>0.655509</x-m>
+			<y-m>-1.07454</y-m>
+			<z-m>-0.595743</z-m>
+		</center>
+		<axis>
+			<x>0.0</x>
+			<y>-1.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>LeftWheelGroup</object-name>
+		<property>gear/gear[1]/compression-norm</property>
+		<factor>2.0</factor>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0.633859</x-m>
+			<y-m>-0.000193</y-m>
+			<z-m>-0.214743</z-m>
+		</center>
+	</animation>
+
+	<!-- Right Main Landing Gear -->
+
+	<animation>
+		<name>RightWheelGroup</name>
+		<object-name>main_wheel_r</object-name>
+		<object-name>fairing_r</object-name>
+		<object-name>strut_r</object-name>
+	</animation>
+
+	<animation>
+		<type>spin</type>
+		<object-name>main_wheel_r</object-name>
+		<property>gear/gear[2]/rollspeed-ms</property>
+		<factor>47.74</factor>
+		<center>
+			<x-m>0.655509</x-m>
+			<y-m>1.06716</y-m>
+			<z-m>-0.595743</z-m>
+		</center>
+		<axis>
+			<x>0.0</x>
+			<y>-1.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+  
+	<animation>
+		<type>rotate</type>
+		<object-name>RightWheelGroup</object-name>
+		<property>gear/gear[2]/compression-norm</property>
+		<factor>2.0</factor>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0.633859</x-m>
+			<y-m>-0.000193</y-m>
+			<z-m>-0.214743</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>fairing_r</object-name>
+		<object-name>fairing_l</object-name>
+		<condition>
+			<property>sim/model/ela07s/mw_fairing</property>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>cyclic1_pilot</object-name>
+		<object-name>cyclic2_pilot</object-name>
+		<object-name>cyclic1_copilot</object-name>
+		<object-name>cyclic2_copilot</object-name>
+		<object-name>prerotator_button</object-name>
+		<condition>
+			<property>sim/model/ela07s/hide-cyclic</property>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>cyclic1_pilot</object-name>
+		<object-name>cyclic2_pilot</object-name>
+		<object-name>prerotator_button</object-name>
+		<property>controls/flight/aileron</property>
+		<factor>-15.0</factor>
+		<axis>
+			<x>1.0</x>
+			<y>0.0</y>
+			<z>0.0</z>
+		</axis>
+		<center>
+			<x-m>-1.23369</x-m>
+			<y-m>-0.000131</y-m>
+			<z-m>-0.200361</z-m>
+		</center>
+	</animation>	
+
+	<animation>
+		<type>rotate</type>
+		<object-name>cyclic1_pilot</object-name>
+		<object-name>cyclic2_pilot</object-name>
+		<object-name>prerotator_button</object-name>
+		<property>controls/flight/elevator</property>
+		<factor>-15.0</factor>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+		<center>
+			<x-m>-1.23369</x-m>
+			<y-m>-0.000131</y-m>
+			<z-m>-0.200361</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>cyclic1_copilot</object-name>
+		<object-name>cyclic2_copilot</object-name>
+		<property>controls/flight/aileron</property>
+		<factor>-15.0</factor>
+		<axis>
+			<x>1.0</x>
+			<y>0.0</y>
+			<z>0.0</z>
+		</axis>
+		<center>
+			<x-m>-0.397291</x-m>
+			<y-m>-0.000131</y-m>
+			<z-m>-0.103912</z-m>
+		</center>
+	</animation>	
+
+	<animation>
+		<type>rotate</type>
+		<object-name>cyclic1_copilot</object-name>
+		<object-name>cyclic2_copilot</object-name>
+		<property>controls/flight/elevator</property>
+		<factor>-15.0</factor>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+		<center>
+			<x-m>-0.397291</x-m>
+			<y-m>-0.000131</y-m>
+			<z-m>-0.103912</z-m>
+		</center>
+	</animation>
+
+	<!-- Rudder --> 
+	<animation>
+		<type>rotate</type>
+		<object-name>rudder</object-name>
+		<property>/controls/flight/rudder</property>
+		<interpolation>
+			<entry>
+				<ind>-1.0</ind>
+				<dep>25</dep>
+			</entry>
+			<entry>
+				<ind>0</ind>
+				<dep>0</dep>
+			</entry>
+			<entry>
+				<ind>1.0</ind>
+				<dep>-25</dep>
+			</entry>
+		</interpolation>
+		<axis>
+			<x1-m>2.60071</x1-m>
+			<y1-m>-0.003193</y1-m>
+			<z1-m>0.824657</z1-m>
+			<x2-m>2.59411</x2-m>
+			<y2-m>-0.001893</y2-m>
+			<z2-m>-0.166643</z2-m>
+		</axis>
+	</animation>
+
+    <!-- Pilot, co-pilot, and passengers -->
+    <model>
+        <name>Pilot</name>
+        <path>Human/female-pilot.xml</path>
+        <offsets>
+            <x-m> -0.80 </x-m>
+            <y-m>  0.00 </y-m>
+            <z-m> -1.04 </z-m>
+        </offsets>
+    </model>
+    <model>
+        <name>Copilot</name>
+        <path>Human/male-copilot.xml</path>
+        <offsets>
+            <x-m> 0.00 </x-m>
+            <y-m> 0.00 </y-m>
+            <z-m> -1.00 </z-m>
+        </offsets>
+    </model>
+
+    <!-- Pilot visible only when not in the cockpit, the walker is not activated and if there is enough weight on his seat -->
+    <animation>
+        <type>select</type>
+        <object-name>Pilot</object-name>
+        <condition>
+            <and>
+                <!-- Note: the sim/ properties do NOT start with a /,
+                     which means that FlightGear tries to find them in
+                     either:
+
+                        (a) the root (/) for the local aircraft, or:
+                        (b) in /ai/models/multiplayer[i]
+
+                     In the case of (b), the properties do not exist, thus
+                     the <not-equals> gets evaluated to true (always), which
+                     is what we want, but this behavior is error-prone.
+                -->
+                <not-equals>
+                    <property>/sim/current-view/name</property>
+                    <value>Cockpit View</value>
+                </not-equals>
+                <not-equals>
+                    <property>/sim/current-view/name</property>
+                    <value>Copilot View</value>
+                </not-equals>
+                <not>
+                    <property>/sim/walker/outside</property>
+                </not>
+                <property>pax/pilot/present</property>
+                <property>sim/model/occupants</property>
+            </and>
+        </condition>
+    </animation>
+
+    <!-- Co-pilot not visible if not enough weight on his seat or if using Cockpit Right Seat View-->
+    <animation>
+        <type>select</type>
+        <object-name>Copilot</object-name>
+        <condition>
+            <and>
+                <not-equals>
+                    <property>/sim/current-view/name</property>
+                    <value>Cockpit View</value>
+                </not-equals>
+                <not-equals>
+                    <property>sim/current-view/name</property>
+                    <value>Copilot View</value>
+                </not-equals>
+                <property>pax/co-pilot/present</property>
+                <property>sim/model/occupants</property>
+            </and>
+        </condition>
+    </animation>
+
+    <!-- Strobe light --> 
+    <model>
+        <name>strobe-light</name>
+        <path>Aircraft/ela07s/Models/Effects/lights/procedural_light_strobe.xml</path>
+        <offsets>
+            <x-m>0.542109</x-m>
+            <y-m>0.000507</y-m>
+            <z-m>1.86236</z-m>
+        </offsets>
+     </model>
+
+	<animation>
+		<name>BrakePilotGroup</name>
+        <object-name>brake1</object-name>
+        <object-name>brake2</object-name>
+		<object-name>park_brake</object-name>
+		<object-name>brakescrew1</object-name>
+		<object-name>brakescrew2</object-name>
+		<object-name>brakescrew3</object-name>	
+	</animation>
+
+	<animation>
+		<name>BrakeCopilotGroup</name>
+        <object-name>copilot_brake1</object-name>
+        <object-name>copilot_brake2</object-name>
+		<object-name>copilot_park_brake</object-name>
+		<object-name>copilot_brakescrew1</object-name>
+		<object-name>copilot_brakescrew2</object-name>
+		<object-name>copilot_brakescrew3</object-name>	
+	</animation>
+	
+    <animation>
+        <type>rotate</type>
+		<object-name>BrakePilotGroup</object-name>	
+        <property>controls/gear/brake-left</property>
+        <factor>25</factor>
+        <axis>
+            <x>0.0</x>
+            <y>1.0</y>
+            <z>0.0</z>
+        </axis>
+		<center>
+			<x-m>-1.01834</x-m>
+			<y-m>-0.176238</y-m>
+			<z-m>0.195979</z-m>
+		</center>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+		<object-name>BrakeCopilotGroup</object-name>	
+        <property>controls/gear/brake-left</property>
+        <factor>25</factor>
+        <axis>
+            <x>0.0</x>
+            <y>1.0</y>
+            <z>0.0</z>
+        </axis>
+		<center>
+			<x-m>-0.150611</x-m>
+			<y-m>-0.216439</y-m>
+			<z-m>0.223614</z-m>
+		</center>
+    </animation>
+	
+    <animation>
+        <type>slider</type>
+        <object-name>brake2</object-name>
+        <object-name>copilot_brake2</object-name>
+		<visible>true</visible>
+        <drag-direction>vertical</drag-direction>
+        <action>
+            <binding>
+                <command>property-adjust</command>
+                <property>controls/gear/brake-left</property>
+                <factor>-0.1</factor>
+                <min>0</min>
+                <max>1</max>
+                <wrap>0</wrap>
+            </binding>
+            <binding>
+                <command>property-adjust</command>
+                <property>controls/gear/brake-right</property>
+                <factor>-0.1</factor>
+                <min>0</min>
+                <max>1</max>
+                <wrap>0</wrap>
+            </binding> 
+		</action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <label>Brakes: %3d%%</label>
+                <measure-text>Brakes: 100%</measure-text>
+                <tooltip-id>brake</tooltip-id>
+                <mapping>percent</mapping>
+                <property>controls/gear/brake-right</property>
+            </binding>
+        </hovered>
+    </animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>park_brake</object-name>	
+        <property>controls/gear/brake-parking</property>
+        <factor>25</factor>
+        <axis>
+            <x>0.0</x>
+            <y>1.0</y>
+            <z>0.0</z>
+        </axis>
+		<center>
+			<x-m>-1.02933</x-m>
+			<y-m>-0.176041</y-m>
+			<z-m>0.235589</z-m>
+		</center>
+    </animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>copilot_park_brake</object-name>	
+        <property>controls/gear/brake-parking</property>
+        <factor>25</factor>
+        <axis>
+            <x>0.0</x>
+            <y>1.0</y>
+            <z>0.0</z>
+        </axis>
+		<center>
+			<x-m>-0.16136</x-m>
+			<y-m>-0.216439</y-m>
+			<z-m>0.262409</z-m>
+		</center>
+    </animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>park_brake</object-name>
+		<object-name>copilot_park_brake</object-name>
+		<visible>true</visible>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/gear/brake-parking</property>
+			</binding>
+<!--    <binding>
+         <command>nasal</command>
+         <script>c152.click("master-bat")</script>
+     </binding> -->
+		</action>
+		<hovered>
+			<binding>
+				<command>set-tooltip</command>
+				<tooltip-id>Parking_break</tooltip-id>
+				<label>Parking brake: %s</label>
+				<mapping>on-off</mapping>
+				<property>controls/gear/brake-parking</property>
+			</binding>
+		</hovered>
+	</animation> 
+
+	<animation>
+		<name>ThrottlePilotGroup</name>
+        <object-name>throttle1</object-name>
+        <object-name>throttle2</object-name>
+        <object-name>brake1</object-name>
+        <object-name>brake2</object-name>
+		<object-name>park_brake</object-name>
+		<object-name>throttlescrew1</object-name>
+		<object-name>throttlescrew2</object-name>
+		<object-name>brakescrew1</object-name>
+		<object-name>brakescrew2</object-name>
+		<object-name>brakescrew3</object-name>	
+	</animation>
+
+	<animation>
+		<name>ThrottleCopilotGroup</name>
+        <object-name>copilot_throttle1</object-name>
+        <object-name>copilot_throttle2</object-name>
+        <object-name>copilot_brake1</object-name>
+        <object-name>copilot_brake2</object-name>
+		<object-name>copilot_park_brake</object-name>
+		<object-name>copilot_throttlescrew1</object-name>
+		<object-name>copilot_throttlescrew2</object-name>
+		<object-name>copilot_brakescrew1</object-name>
+		<object-name>copilot_brakescrew2</object-name>
+		<object-name>copilot_brakescrew3</object-name>	
+	</animation>
+
+    <animation>
+        <type>rotate</type>
+		<object-name>ThrottlePilotGroup</object-name>	
+        <property>controls/engines/engine[0]/throttle</property>
+        <factor>-40</factor>
+        <axis>
+            <x>0.0</x>
+            <y>1.0</y>
+            <z>0.0</z>
+        </axis>
+		<center>
+			<x-m>-1.06431</x-m>
+			<y-m>-0.178106</y-m>
+			<z-m>0.124392</z-m>
+		</center>
+	</animation>
+ 
+    <animation>
+        <type>rotate</type>
+		<object-name>ThrottleCopilotGroup</object-name>	
+        <property>controls/engines/engine[0]/throttle</property>
+        <factor>-40</factor>
+        <axis>
+            <x>0.0</x>
+            <y>1.0</y>
+            <z>0.0</z>
+        </axis>
+		<center>
+			<x-m>-0.196339</x-m>
+			<y-m>-0.218503</y-m>
+			<z-m>0.151212</z-m>
+		</center>
+	</animation>
+	
+	<animation>
+        <type>slider</type>
+        <object-name>throttle2</object-name>
+        <object-name>copilot_throttle2</object-name>
+        <visible>true</visible>
+        <drag-direction>vertical</drag-direction>
+        <action>
+            <binding>
+                <command>property-adjust</command>
+                <property>controls/engines/engine[0]/throttle</property>
+                <factor>0.05</factor>
+                <min>0</min>
+                <max>1</max>
+                <wrap>0</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <label>Throttle: %3d%%</label>
+                <measure-text>Throttle: 100%</measure-text>
+                <tooltip-id>throttle</tooltip-id>
+                <mapping>percent</mapping>
+                <property>controls/engines/engine[0]/throttle</property>
+            </binding>
+        </hovered>
+    </animation>
+
+	<!-- Hide cyclic -->
+	<animation>
+		<type>select</type>
+		<object-name>cyclic1_pilot</object-name>
+		<object-name>cyclic2_pilot</object-name>
+		<object-name>prerotator_button</object-name>   
+		<condition>
+			<property>/sim/model/ela07s/hide-cyclic</property>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>cyclic1_pilot</object-name>
+		<visible>true</visible>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>/sim/model/ela07s/hide-cyclic</property>
+			</binding>
+		</action>
+		<hovered>
+			<binding>
+				<command>set-tooltip</command>
+				<tooltip-id>show-hide-cyclic</tooltip-id>
+				<label>Hide Cyclic</label>
+			</binding>
+		</hovered>
+	</animation>
+ 
+	<!-- cockpit door -->
+    <animation>
+		<type>pick</type>
+        <object-name>door_ext</object-name>
+        <object-name>door_int</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>ela07s.rightdoor.toggle();</script>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>door-handle-r</tooltip-id>
+                <label>Open/Close door</label>
+            </binding>
+        </hovered>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>door_ext</object-name>
+        <object-name>door_int</object-name>	
+        <property alias="/params/doors/right"/>
+        <interpolation>
+            <entry>
+                <ind>0.0</ind>
+                <dep>0.0</dep>
+            </entry>
+            <entry>
+                <ind>0.5</ind>
+                <dep>90.0</dep>
+            </entry>
+            <entry>
+                <ind>1</ind>
+                <dep>179.0</dep>
+            </entry>
+        </interpolation>
+		<axis>
+			<x1-m>-0.916891</x1-m>
+			<y1-m>0.273007</y1-m>
+			<z1-m>0.012157</z1-m>
+			<x2-m>-1.42407</x2-m>
+			<y2-m>0.273007</y2-m>
+			<z2-m>-0.008475</z2-m>
+		</axis>
+    </animation>
+ 
+</PropertyList>

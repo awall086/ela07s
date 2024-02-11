@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <path>orange_ind.ac</path>
+
+ <animation>
+  <object-name>light_on</object-name>
+  <type>select</type>
+  <condition>
+	<and>
+   <less-than>
+    <property>/systems/ela07s/electrical/suppliers/alternator</property>
+    <value>10.0</value>
+   </less-than>
+   <greater-than>
+    <property>/systems/ela07s/electrical/volts</property>
+    <value>8.3</value>
+   </greater-than>
+  </and>
+  </condition>
+ </animation>
+
+ <animation> 
+  <type>material</type> 
+  <object-name>light_on</object-name>
+  <condition>
+	<and>
+   <less-than>
+    <property>/systems/ela07s/electrical/suppliers/alternator</property>
+    <value>10.0</value>
+   </less-than>
+   <greater-than>
+    <property>/systems/ela07s/electrical/volts</property>
+    <value>8.3</value>
+   </greater-than>
+  </and>
+  </condition>
+
+  <emission>
+   <red>1.0</red>
+   <green>0.75</green>
+   <blue>0.0</blue>
+  </emission>
+ </animation>
+
+
+</PropertyList>
+
+
