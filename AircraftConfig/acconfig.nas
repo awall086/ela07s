@@ -47,10 +47,10 @@ setprop("/systems/acconfig/mismatch-reason", "XX");
 setprop("/systems/acconfig/options/revision", "NONE");
 
 
-var init_dlg = gui.Dialog.new("/sim/gui/dialogs/acconfig/init/dialog", "Aircraft/pa11/AircraftConfig/init.xml");
-var update_dlg = gui.Dialog.new("/sim/gui/dialogs/acconfig/update/dialog", "Aircraft/pa11/AircraftConfig/update.xml");
-var updated_dlg = gui.Dialog.new("/sim/gui/dialogs/acconfig/updated/dialog", "Aircraft/pa11/AircraftConfig/updated.xml");
-var error_mismatch = gui.Dialog.new("/sim/gui/dialogs/acconfig/error/mismatch/dialog", "Aircraft/pa11/AircraftConfig/error-mismatch.xml");
+var init_dlg = gui.Dialog.new("/sim/gui/dialogs/acconfig/init/dialog", "Aircraft/ela07s/AircraftConfig/init.xml");
+var update_dlg = gui.Dialog.new("/sim/gui/dialogs/acconfig/update/dialog", "Aircraft/ela07s/AircraftConfig/update.xml");
+var updated_dlg = gui.Dialog.new("/sim/gui/dialogs/acconfig/updated/dialog", "Aircraft/ela07s/AircraftConfig/updated.xml");
+var error_mismatch = gui.Dialog.new("/sim/gui/dialogs/acconfig/error/mismatch/dialog", "Aircraft/ela07s/AircraftConfig/error-mismatch.xml");
 
 spinning.start();
 init_dlg.open();
